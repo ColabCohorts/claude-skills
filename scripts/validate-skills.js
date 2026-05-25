@@ -11,7 +11,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const SKILLS_DIR = path.resolve(__dirname, '..', 'skills');
+const SKILLS_DIR = path.resolve(__dirname, '..', 'claude-skills');
 const REQUIRED_FIELDS = ['name', 'description'];
 
 let errors = 0;
