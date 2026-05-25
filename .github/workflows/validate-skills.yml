@@ -23,4 +23,6 @@ jobs:
         run: node -e "const m = require('./.claude-plugin/plugin.json'); if (!m.name || !m.description) { console.error('Missing required fields in plugin.json'); process.exit(1); } console.log('✅ Plugin manifest valid:', m.name, 'v' + (m.version || 'unversioned'));"
 
       - name: Validate skill format
-        run: node scripts/validate-skills.js
+        run: |
+          ls -la skills/ | head -5
+          node scripts/validate-skills.js
