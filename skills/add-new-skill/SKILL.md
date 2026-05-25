@@ -1,11 +1,11 @@
 ---
 name: add-new-skill
-description: Guide users through creating a new Claude skill and adding it to the Colab AI Prompts repository. Use when someone wants to add a new prompt or skill to the toolkit.
+description: Guide users through creating a new Claude skill and submitting it as a pull request to the Colab Toolkit repository. Use when someone wants to add a new prompt or skill to the toolkit.
 ---
 
 # Add a New Skill
 
-Guide the user through creating a new Claude skill for the Colab AI Prompts repository.
+Guide the user through creating a new Claude skill for the Colab Toolkit and submitting it as a pull request.
 
 ## Process
 
@@ -25,11 +25,19 @@ Create a kebab-case ID from the skill name:
 - Maximum 64 characters
 - Must be descriptive and unique
 
-Confirm the ID with the user before proceeding.
+Check existing skills in the `skills/` directory to ensure uniqueness. Confirm the ID with the user before proceeding.
 
-### Step 3: Write the SKILL.md
+### Step 3: Create a Branch
 
-Create the file at `claude-skills/{skill-id}/SKILL.md` with this structure:
+Create a new git branch for the contribution:
+
+```bash
+git checkout -b add-skill/{skill-id}
+```
+
+### Step 4: Write the SKILL.md
+
+Create the file at `skills/{skill-id}/SKILL.md` with this structure:
 
 ```markdown
 ---
@@ -57,44 +65,64 @@ description: {One sentence describing what the skill does and when to use it.}
 {End with: "Ask the user for X if not provided."}
 ```
 
-### Step 4: Add to the Web App
-
-Also create the corresponding entry for `src/data/prompts.js`:
-
-```javascript
-{
-  id: '{skill-id}',
-  title: '{Skill Title}',
-  description: '{Short description for the card}',
-  fullPrompt: `{The full prompt text}`
-}
-```
-
-Confirm which category it belongs to:
-- The Product Toolkit
-- User Research & Analysis
-- Product Strategy & Vision
-- Roadmapping & Prioritization
-
-Or suggest creating a new category if none fit.
-
 ### Step 5: Update the README
 
-Add the new skill to the table in `claude-skills/README.md`.
+Add the new skill to the "Available Skills" table in `README.md`.
+
+### Step 6: Validate
+
+Run the validation script to confirm the skill is correctly formatted:
+
+```bash
+node scripts/validate-skills.js
+```
+
+Fix any errors before proceeding.
+
+### Step 7: Commit and Push
+
+Stage, commit, and push the new skill:
+
+```bash
+git add skills/{skill-id}/SKILL.md README.md
+git commit -m "Add skill: {skill-id}"
+git push -u origin add-skill/{skill-id}
+```
+
+### Step 8: Create a Pull Request
+
+Create a pull request targeting the upstream repository:
+
+```bash
+gh pr create --repo ColabCohorts/claude-skills --base main --title "Add skill: {skill-id}" --body "## New Skill
+
+**Name:** {skill-id}
+**Description:** {description}
+
+## Checklist
+- [ ] Skill ID is unique and kebab-case
+- [ ] SKILL.md has valid YAML frontmatter with name and description
+- [ ] name field matches folder name
+- [ ] Instructions are clear and actionable
+- [ ] README table updated
+- [ ] Validation passes (`node scripts/validate-skills.js`)"
+```
+
+If `gh` is not available or not authenticated, provide the user with a direct link:
+
+```
+https://github.com/ColabCohorts/claude-skills/compare/main...add-skill/{skill-id}
+```
+
+And provide the PR body text for them to paste.
 
 ## Rules
 
 - Always confirm each step with the user before writing files
-- Ensure the skill ID is unique (check existing skills in the repo)
+- Ensure the skill ID is unique (check existing skills in `skills/`)
 - Keep descriptions concise — Claude uses them for skill discovery
 - Instructions should be actionable and specific
 - Always include "Context to Gather" so the skill asks for missing info
-- Test that the YAML frontmatter is valid (no special characters in name)
-
-## Existing Categories in the Web App
-
-For reference, these are the current prompt categories in `src/data/prompts.js`:
-1. **The Product Toolkit** — Story building, executive comms, hypothesis testing, metrics, onboarding, outcomes, opportunities, solutions, testing
-2. **User Research & Analysis** — Personas, interview questions, feedback analysis
-3. **Product Strategy & Vision** — Vision statements, SWOT, North Star metrics
-4. **Roadmapping & Prioritization** — User stories, RICE framework, PRDs
+- The `name` field in frontmatter MUST match the folder name exactly
+- Run validation before committing — do not submit broken skills
+- Always create a branch — never commit directly to main
