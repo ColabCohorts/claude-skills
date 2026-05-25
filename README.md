@@ -1,11 +1,51 @@
-# Colab Toolkit - Claude Skills
+# Colab Toolkit — Claude Code Plugin
 
-These are custom Claude Skills that can be imported into Claude for use in projects and conversations.
+A Claude Code plugin with product management skills for discovery, strategy, prioritization, and communication workflows.
 
-## How to Import
+## Installation
 
-1. Copy the `claude-skills` folder (or individual skill folders) into your Claude project's `claude/skills/` directory
-2. Each skill will be automatically available when Claude detects a relevant request
+### From a marketplace (recommended)
+
+If this plugin is listed in a marketplace you have configured:
+
+```bash
+/plugin install @marketplace-name colab-toolkit
+```
+
+### Local installation
+
+Clone the repo and load it directly:
+
+```bash
+git clone https://github.com/johnbowker/claude-skills.git
+claude --plugin-dir ./claude-skills
+```
+
+### Per-project installation
+
+Add to your project's `.claude/plugins.json`:
+
+```json
+{
+  "plugins": [
+    {
+      "url": "https://github.com/johnbowker/claude-skills"
+    }
+  ]
+}
+```
+
+## Usage
+
+Once installed, skills are available under the `colab-toolkit` namespace:
+
+```
+/colab-toolkit:build-compelling-story
+/colab-toolkit:refine-metric
+/colab-toolkit:brainstorm-solutions
+```
+
+Claude will also automatically invoke skills based on task context using the skill descriptions.
 
 ## Available Skills
 
@@ -32,16 +72,46 @@ These are custom Claude Skills that can be imported into Claude for use in proje
 | `generate-user-stories` | Break features into user stories |
 | `prioritization-framework` | Apply RICE framework to feature lists |
 | `draft-prd-outline` | Generate structured PRD outlines |
+| `add-new-skill` | Scaffold new skills following the standard format |
 
-## Skill Structure
-
-Each skill follows the Claude Skills format:
+## Plugin Structure
 
 ```
-skill-name/
-└── SKILL.md       # Contains YAML frontmatter (name, description) + instructions
+claude-skills/
+├── .claude-plugin/
+│   └── plugin.json          # Plugin manifest
+├── skills/                  # All skills live here
+│   ├── refine-metric/
+│   │   └── SKILL.md
+│   ├── brainstorm-solutions/
+│   │   └── SKILL.md
+│   └── ...
+├── scripts/
+│   └── validate-skills.js   # CI validation script
+└── .github/
+    └── workflows/
+        └── validate-skills.yml
 ```
 
-## Usage
+Each skill is a folder containing a `SKILL.md` with YAML frontmatter (`name`, `description`) and markdown instructions.
 
-Once imported, Claude will automatically invoke the relevant skill when it detects a matching request. You can also explicitly ask Claude to use a specific skill.
+## Development
+
+### Validate skills locally
+
+```bash
+node scripts/validate-skills.js
+```
+
+### Test the plugin
+
+```bash
+claude --plugin-dir .
+```
+
+## Contributing
+
+1. Create a new skill folder under `skills/` with a `SKILL.md`
+2. Ensure the `name` field in frontmatter matches the folder name
+3. Run `node scripts/validate-skills.js` to check formatting
+4. Submit a PR — CI will validate automatically
