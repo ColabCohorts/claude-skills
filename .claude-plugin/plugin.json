@@ -1,0 +1,10 @@
+{
+  "name": "colab-toolkit",
+  "description": "Product management skills for discovery, strategy, prioritization, and communication workflows",
+  "version": "1.0.0",
+  "author": {
+    "name": "John Bowker"
+  },
+  "repository": "https://github.com/johnbowker/claude-skills",
+  "license": "MIT"
+}
