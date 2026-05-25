@@ -2,16 +2,15 @@
   "name": "colab-toolkit",
   "description": "Product management skills for Claude Code — discovery, strategy, prioritization, and communication workflows",
   "owner": {
-    "name": "John Bowker @ Colab Cohorts"
+    "name": "Colab Cohorts"
   },
   "plugins": [
     {
       "name": "colab-toolkit",
       "source": "./",
       "description": "Product management skills for discovery, strategy, prioritization, and communication workflows",
-      "version": "1.0.1",
       "author": {
-        "name": "John Bowker @ Colab Cohorts"
+        "name": "Colab Cohorts"
       },
       "keywords": ["product-management", "discovery", "strategy", "prioritization", "communication"]
     }
