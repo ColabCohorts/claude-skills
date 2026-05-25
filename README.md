@@ -2,17 +2,18 @@
 
 A Claude Code plugin with product management skills for discovery, strategy, prioritization, and communication workflows.
 
+[![Validate Claude Skills](https://github.com/ColabCohorts/claude-skills/actions/workflows/validate-skills.yml/badge.svg)](https://github.com/ColabCohorts/claude-skills/actions/workflows/validate-skills.yml)
+
 ## Installation
 
-### From a marketplace (recommended)
-
-If this plugin is listed in a marketplace you have configured:
+### Add the marketplace and install (recommended)
 
 ```bash
-/plugin install @marketplace-name colab-toolkit
+/plugin marketplace add johnbowker/claude-skills
+/plugin install colab-toolkit@colab-toolkit
 ```
 
-### Local installation
+### Local testing
 
 Clone the repo and load it directly:
 
@@ -21,17 +22,20 @@ git clone https://github.com/johnbowker/claude-skills.git
 claude --plugin-dir ./claude-skills
 ```
 
-### Per-project installation
+### Require for your team
 
-Add to your project's `.claude/plugins.json`:
+Add to your project's `.claude/settings.json` so teammates are prompted to install:
 
 ```json
 {
-  "plugins": [
-    {
-      "url": "https://github.com/johnbowker/claude-skills"
+  "extraKnownMarketplaces": {
+    "colab-toolkit": {
+      "source": {
+        "source": "github",
+        "repo": "johnbowker/claude-skills"
+      }
     }
-  ]
+  }
 }
 ```
 
@@ -79,7 +83,8 @@ Claude will also automatically invoke skills based on task context using the ski
 ```
 claude-skills/
 ├── .claude-plugin/
-│   └── plugin.json          # Plugin manifest
+│   ├── plugin.json          # Plugin manifest
+│   └── marketplace.json     # Marketplace catalog
 ├── skills/                  # All skills live here
 │   ├── refine-metric/
 │   │   └── SKILL.md

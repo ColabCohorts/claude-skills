@@ -11,7 +11,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const SKILLS_DIR = path.resolve(__dirname, '..', 'claude-skills');
+const REPO_ROOT = path.resolve(__dirname, '..');
+const SKILLS_DIR = path.join(REPO_ROOT, 'skills');
 const REQUIRED_FIELDS = ['name', 'description'];
 
 let errors = 0;
