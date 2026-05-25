@@ -2,6 +2,8 @@
 
 A Claude Code plugin with product management skills for discovery, strategy, prioritization, and communication workflows.
 
+[![Validate Claude Skills](https://github.com/ColabCohorts/claude-skills/actions/workflows/validate-skills.yml/badge.svg)](https://github.com/ColabCohorts/claude-skills/actions/workflows/validate-skills.yml)
+
 ## Installation
 
 ### From a marketplace (recommended)
