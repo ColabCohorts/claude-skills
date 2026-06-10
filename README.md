@@ -32,7 +32,7 @@ Add to your project's `.claude/settings.json` so teammates are prompted to insta
     "colab-toolkit": {
       "source": {
         "source": "github",
-        "repo": "johnbowker/claude-skills"
+        "repo": "ColabCohorts/claude-skills"
       }
     }
   }
