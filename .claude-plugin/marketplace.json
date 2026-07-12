@@ -1,4 +1,5 @@
 {
+  "$schema": "https://www.schemastore.org/claude-code-marketplace.json",
   "name": "colab-toolkit",
   "description": "Product management skills for Claude Code — discovery, strategy, prioritization, and communication workflows",
   "owner": {
@@ -12,6 +13,7 @@
       "author": {
         "name": "Colab Cohorts"
       },
+      "category": "productivity",
       "keywords": ["product-management", "discovery", "strategy", "prioritization", "communication"]
     }
   ]
