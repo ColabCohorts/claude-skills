@@ -52,7 +52,7 @@ If something can't be determined from the code, say so explicitly rather than gu
 
 ## 2. Map key workflows and user roles
 
-- Find where user roles/permissions are defined: route guards, middleware, auth checks, role enums, RBAC config. Identify the distinct personas the app serves (e.g. Admin, Mentor, Mentee, Guest, Org Owner).
+- Find where user roles/permissions are defined: route guards, middleware, auth checks, role enums, RBAC config. Identify the distinct personas the app serves (e.g. Admin, Mentor, Mentee, Guest, Org Owner). If the app has an explicit persona/role enum or RBAC table, use it as the source of truth. If instead you're inferring personas from scattered permission checks and feature gating, **say so** — label them "inferred" rather than presenting them as a definitive list, and note in Open Questions where the authoritative list would come from.
 - Walk the app's routing (`router/`, `pages/`, `app/`, URL/controller definitions) and group screens/endpoints into the workflows a user actually performs — not a file-by-file inventory. Think in terms of "what can each persona *do*": sign up, get matched, book a session, review progress, manage members, etc.
 - For each workflow, note which persona(s) use it and reference the primary file(s) so a reader could go look (e.g. `src/views/PairingView.vue`).
 - Prefer breadth over exhaustive depth: cover every major feature area once rather than every edge case.
@@ -64,11 +64,20 @@ Search the codebase (not just source — also READMEs, ADRs, design docs) for:
 - Language hinting at known gaps: "temporary", "workaround", "hack", "legacy", "not implemented", "for now", "revisit", "technical debt".
 - Explicit limitations documented in README/docs files (known issues, roadmap, "out of scope" sections).
 
-Report each with a one-line plain-English translation of why it matters, plus a `file:line` pointer. Group related ones together instead of listing 40 near-duplicates.
+Report each with a one-line plain-English translation of why it matters, plus a `file:line` pointer. Group related ones together instead of listing 40 near-duplicates. A precise `file:line` is ideal, but on a large codebase where enumerating every line isn't practical, a file-level or doc reference (or the tracking-ticket ID if the comment carries one) is acceptable — don't drop a real finding just because you can't pin an exact line.
 
 ## 4. For large codebases
 
 If the folder is large enough that reading everything serially would be slow, delegate discovery to parallel subagents (one per major area — e.g. frontend, backend, infra/config) via the Agent tool, each reporting back stack findings, workflow findings, and tech-debt findings for its area. Synthesize their results yourself into the single report below — don't just concatenate their raw output.
+
+**Instruct each subagent explicitly** to: actually read files and grep (use Glob/Grep/Read), return raw findings with `file:line` references, and **not invoke any skills** — this is read-only exploration, not a task that triggers other skills.
+
+**Before you trust a subagent's result, sanity-check it — subagent output is unreliable in two specific ways this skill has hit repeatedly:**
+
+1. **A subagent may return nothing useful.** If a result comes back suspiciously fast, with zero tool calls, or with text that doesn't answer what you asked (e.g. generic boilerplate or leaked instructions instead of findings), treat it as a failed run: discard it and relaunch that area with a sharper prompt. Do **not** synthesize from an empty or off-topic result.
+2. **A subagent may re-report with a fuller result.** The same agent can finish once with a thin first pass and then complete again with a far more thorough one. A quick first `completed` is often *not* the final word. Before synthesizing, wait for each area's genuinely-final result, and when an agent reports more than once, **treat the most complete report as authoritative and reconcile** — a fuller pass routinely corrects stack facts (framework/package versions, which auth or data stores are actually used), upgrades "inferred/uncertain" personas into a concrete role model, and surfaces whole technologies the thin pass missed. Don't lock in the report off a first pass you'd be embarrassed to have been wrong about.
+
+Verify each area's findings look real (non-zero tool calls, concrete `file:line` references) before folding them into the report.
 
 ## 5. Simplify complex implementations
 
