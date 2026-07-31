@@ -58,6 +58,7 @@ Claude will also automatically invoke skills based on task context using the ski
 |-------|-------------|
 | `build-compelling-story` | Transform raw notes into a Steve Jobs style 3-Act Narrative |
 | `executive-alignment` | Rewrite messages for executives using Minto Pyramid Principle |
+| `pyramid-principle-comms` | Restructure updates into a top-down executive format using the Pyramid Principle |
 | `test-hypothesis` | Create customer-centred scenarios to validate hypotheses |
 | `refine-metric` | Ensure metrics focus on outcomes, not outputs |
 | `refine-outcome-statement` | Make outcome statements specific and measurable |
