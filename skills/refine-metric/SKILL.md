@@ -1,6 +1,6 @@
 ---
 name: refine-metric
-description: Refine a product metric to ensure it focuses on outcomes rather than outputs. Use when someone needs help choosing or improving a metric for their product.
+description: Critique and improve a single existing product metric the user already has, checking it measures outcomes rather than outputs and fits the target customer. Use when someone hands you one specific metric to refine. For a broader outcome statement use refine-outcome-statement; for picking a company-wide North Star Metric from scratch use define-north-star-metric.
 ---
 
 # Refine My Metric

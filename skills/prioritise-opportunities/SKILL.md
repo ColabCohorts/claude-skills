@@ -1,6 +1,6 @@
 ---
 name: prioritise-opportunities
-description: Rank product opportunities based on alignment with organisational strategy and potential business impact. Use when someone has a list of opportunities and needs to prioritise them.
+description: Rank a list of discovery-stage opportunities (problems or needs, not yet solutions) against organisational strategy, OKRs, and business impact. Use when someone has an opportunity list to prioritise. For ranking already-brainstormed solution ideas use prioritise-solutions; for RICE-scoring features for a dev cycle use prioritisation-framework.
 ---
 
 # Prioritising Opportunities Based on Company Goals

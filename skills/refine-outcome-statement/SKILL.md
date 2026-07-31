@@ -1,6 +1,6 @@
 ---
 name: refine-outcome-statement
-description: Refine a product outcome statement to be specific, measurable, and aligned with organisational goals. Use when someone needs to improve their outcome statement.
+description: Rewrite an existing outcome statement (a goal describing the desired change in user behaviour, broader than a single metric) to be specific, measurable, and aligned with organisational goals. Use when someone has a draft outcome statement to improve. For a single metric use refine-metric; for a from-scratch North Star Metric search use define-north-star-metric.
 ---
 
 # Refining Your Outcome Statement

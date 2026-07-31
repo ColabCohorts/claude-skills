@@ -75,7 +75,7 @@ Claude will also automatically invoke skills based on task context using the ski
 | `swot-analysis` | Conduct strategic SWOT analysis |
 | `define-north-star-metric` | Brainstorm North Star Metrics |
 | `generate-user-stories` | Break features into user stories |
-| `prioritization-framework` | Apply RICE framework to feature lists |
+| `prioritisation-framework` | Apply RICE framework to feature lists |
 | `draft-prd-outline` | Generate structured PRD outlines |
 | `add-new-skill` | Scaffold new skills following the standard format |
 
