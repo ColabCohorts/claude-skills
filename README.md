@@ -9,7 +9,7 @@ A Claude Code plugin with product management skills for discovery, strategy, pri
 ### Add the marketplace and install (recommended)
 
 ```bash
-/plugin marketplace add johnbowker/claude-skills
+/plugin marketplace add ColabCohorts/claude-skills
 /plugin install colab-toolkit@colab-toolkit
 ```
 
@@ -18,7 +18,7 @@ A Claude Code plugin with product management skills for discovery, strategy, pri
 Clone the repo and load it directly:
 
 ```bash
-git clone https://github.com/johnbowker/claude-skills.git
+git clone https://github.com/ColabCohorts/claude-skills.git
 claude --plugin-dir ./claude-skills
 ```
 
@@ -47,6 +47,7 @@ Once installed, skills are available under the `colab-toolkit` namespace:
 /colab-toolkit:build-compelling-story
 /colab-toolkit:refine-metric
 /colab-toolkit:brainstorm-solutions
+/colab-toolkit:explain-this-codebase
 ```
 
 Claude will also automatically invoke skills based on task context using the skill descriptions.
@@ -76,6 +77,7 @@ Claude will also automatically invoke skills based on task context using the ski
 | `generate-user-stories` | Break features into user stories |
 | `prioritization-framework` | Apply RICE framework to feature lists |
 | `draft-prd-outline` | Generate structured PRD outlines |
+| `explain-this-codebase` | Explain a codebase in plain English for non-technical readers |
 | `add-new-skill` | Scaffold new skills following the standard format |
 
 ## Plugin Structure
