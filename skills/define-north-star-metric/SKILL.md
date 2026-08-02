@@ -1,6 +1,6 @@
 ---
 name: define-north-star-metric
-description: Brainstorm potential North Star Metrics that align with delivering core user value. Use when someone needs to identify the single most important metric for their product.
+description: Brainstorm candidate North Star Metrics from scratch for a product, given its description and business model — no existing metric required. Use when someone needs to identify the single most important company-wide metric for their product. Not for refining a metric or outcome statement they already have — use refine-metric or refine-outcome-statement for that.
 ---
 
 # Define North Star Metric
