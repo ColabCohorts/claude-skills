@@ -77,6 +77,7 @@ Claude will also automatically invoke skills based on task context using the ski
 | `generate-user-stories` | Break features into user stories |
 | `prioritisation-framework` | Apply RICE framework to feature lists |
 | `draft-prd-outline` | Generate structured PRD outlines |
+| `generate-ai-ready-prd` | Expand a problem, persona, and solution into a full AI-ready PRD for code pipelines |
 | `add-new-skill` | Scaffold new skills following the standard format |
 
 ## Plugin Structure
