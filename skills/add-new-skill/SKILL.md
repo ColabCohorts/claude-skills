@@ -1,11 +1,11 @@
 ---
 name: add-new-skill
-description: Guide users through creating a new Claude skill and submitting it as a pull request to the Colab Toolkit repository. Use when someone wants to add a new prompt or skill to the toolkit.
+description: Guide users through creating a new agent skill and submitting it as a pull request to the Colab Toolkit repository. Use when someone wants to add a new prompt or skill to the toolkit.
 ---
 
 # Add a New Skill
 
-Guide the user through creating a new Claude skill for the Colab Toolkit and submitting it as a pull request.
+Guide the user through creating a new agent skill for the Colab Toolkit and submitting it as a pull request. The toolkit ships one `SKILL.md` per skill that works across every supported ecosystem (Claude Code, Codex CLI/ChatGPT, Gemini CLI) — no provider-specific variants are needed.
 
 ## Process
 
@@ -51,10 +51,10 @@ description: {One sentence describing what the skill does and when to use it.}
 
 ## Instructions
 
-{Clear, numbered steps for how Claude should execute this skill.}
+{Clear, numbered steps for how the agent should execute this skill.}
 
 ### Context to Gather
-- {What information does Claude need from the user?}
+- {What information does the agent need from the user?}
 
 ### Output Format
 {Describe the expected output structure.}
@@ -94,7 +94,7 @@ git push -u origin add-skill/{skill-id}
 Create a pull request targeting the upstream repository:
 
 ```bash
-gh pr create --repo ColabCohorts/claude-skills --base main --title "Add skill: {skill-id}" --body "## New Skill
+gh pr create --repo ColabCohorts/colab-product-skills --base main --title "Add skill: {skill-id}" --body "## New Skill
 
 **Name:** {skill-id}
 **Description:** {description}
@@ -111,7 +111,7 @@ gh pr create --repo ColabCohorts/claude-skills --base main --title "Add skill: {
 If `gh` is not available or not authenticated, provide the user with a direct link:
 
 ```
-https://github.com/ColabCohorts/claude-skills/compare/main...add-skill/{skill-id}
+https://github.com/ColabCohorts/colab-product-skills/compare/main...add-skill/{skill-id}
 ```
 
 And provide the PR body text for them to paste.
@@ -120,7 +120,7 @@ And provide the PR body text for them to paste.
 
 - Always confirm each step with the user before writing files
 - Ensure the skill ID is unique (check existing skills in `skills/`)
-- Keep descriptions concise — Claude uses them for skill discovery
+- Keep descriptions concise — every supported agent (Claude, Codex/ChatGPT, Gemini) uses them for skill discovery
 - Instructions should be actionable and specific
 - Always include "Context to Gather" so the skill asks for missing info
 - The `name` field in frontmatter MUST match the folder name exactly

@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Validates that all Claude Skills conform to the expected format:
+ * Validates that all Agent Skills conform to the expected format:
  * - Each skill folder contains a SKILL.md file
  * - SKILL.md has valid YAML frontmatter with required fields (name, description)
  * - The `name` field matches the folder name
@@ -14,6 +14,8 @@ const path = require('path');
 const REPO_ROOT = path.resolve(__dirname, '..');
 const SKILLS_DIR = path.join(REPO_ROOT, 'skills');
 const REQUIRED_FIELDS = ['name', 'description'];
+const KEBAB_CASE_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+const MAX_NAME_LENGTH = 64;
 
 let errors = 0;
 let warnings = 0;
@@ -76,6 +78,16 @@ function validateSkill(skillDir, folderName) {
     errors++;
   }
 
+  // Check name is kebab-case and within length limits (required by Codex CLI/ChatGPT skill naming rules)
+  if (!KEBAB_CASE_PATTERN.test(folderName)) {
+    log('error', folderName, 'Skill name must be lowercase letters, numbers, and hyphens only (kebab-case)');
+    errors++;
+  }
+  if (folderName.length > MAX_NAME_LENGTH) {
+    log('error', folderName, `Skill name exceeds ${MAX_NAME_LENGTH} characters`);
+    errors++;
+  }
+
   // Check description length
   if (frontmatter.fields.description && frontmatter.fields.description.length < 10) {
     log('warning', folderName, 'Description is very short — consider making it more descriptive');
@@ -100,7 +112,7 @@ function validateSkill(skillDir, folderName) {
 }
 
 // Main
-console.log(`\nValidating Claude Skills in: ${SKILLS_DIR}\n`);
+console.log(`\nValidating Agent Skills in: ${SKILLS_DIR}\n`);
 
 if (!fs.existsSync(SKILLS_DIR)) {
   console.error(`Skills directory not found: ${SKILLS_DIR}`);

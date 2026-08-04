@@ -1,4 +1,4 @@
-name: Validate Claude Skills
+name: Validate Agent Skills
 
 on:
   push:
@@ -14,16 +14,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Lint workflow files
+        uses: raven-actions/actionlint@v2
+
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Validate plugin manifest
-        run: node -e "const m = require('./.claude-plugin/plugin.json'); if (!m.name || !m.description) { console.error('Missing required fields in plugin.json'); process.exit(1); } console.log('✅ Plugin manifest valid:', m.name, 'v' + (m.version || 'unversioned'));"
-
-      - name: Validate marketplace catalog
-        run: node -e "const m = require('./.claude-plugin/marketplace.json'); if (!m.name || !m.owner || !m.plugins || !m.plugins.length) { console.error('Missing required fields in marketplace.json'); process.exit(1); } m.plugins.forEach(p => { if (!p.name || !p.source) { console.error('Plugin missing name or source:', p); process.exit(1); } }); console.log('✅ Marketplace valid:', m.name, '—', m.plugins.length, 'plugin(s)');"
+      - name: Validate provider manifests (Claude, Codex/ChatGPT, Gemini)
+        run: node scripts/validate-manifests.js
 
       - name: Validate skill format
         run: |

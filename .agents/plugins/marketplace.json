@@ -1,0 +1,17 @@
+{
+  "name": "colab-toolkit",
+  "interface": {
+    "displayName": "Colab Toolkit"
+  },
+  "plugins": [
+    {
+      "name": "colab-toolkit",
+      "source": {
+        "type": "local",
+        "path": "./"
+      },
+      "description": "Product management skills for discovery, strategy, prioritization, and communication workflows",
+      "category": "productivity"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "name": "colab-toolkit",
+  "version": "1.0.0",
+  "description": "Product management skills for discovery, strategy, prioritization, and communication workflows",
+  "author": {
+    "name": "Colab Cohorts"
+  },
+  "interface": {
+    "displayName": "Colab Toolkit",
+    "shortDescription": "Product management skills for discovery, strategy, prioritization, and communication workflows",
+    "longDescription": "A collection of product management skills covering discovery (opportunities, personas, research synthesis), strategy (metrics, prioritization, vision), and communication (executive alignment, PRFAQs, PRDs) workflows.",
+    "category": "productivity"
+  },
+  "skills": "./skills",
+  "homepage": "https://github.com/ColabCohorts/colab-product-skills",
+  "repository": "https://github.com/ColabCohorts/colab-product-skills",
+  "license": "MIT",
+  "keywords": ["product-management", "discovery", "strategy", "prioritization", "communication"]
+}
