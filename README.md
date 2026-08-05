@@ -4,6 +4,10 @@ A ready-made set of product management skills — for discovery, strategy, prior
 
 [![Validate Agent Skills](https://github.com/ColabCohorts/colab-product-skills/actions/workflows/validate-skills.yml/badge.svg)](https://github.com/ColabCohorts/colab-product-skills/actions/workflows/validate-skills.yml)
 
+<img width="100" alt="image" src="https://github.com/user-attachments/assets/ce9d1353-6125-4279-ac56-f9a4cc809d4f" />
+
+
+
 ## Getting Started
 
 These skills work inside four different AI tools: **Claude Code**, **Codex CLI**, **ChatGPT**, and **Gemini CLI**. Pick whichever one your team already uses below — you only need to follow one section.
