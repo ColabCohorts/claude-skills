@@ -84,6 +84,8 @@ You don't need to memorize this list — it's here for reference. Just describe 
 | `explain-this-codebase` | Explain a codebase in plain English for non-technical readers |
 | `add-new-skill` | Scaffold new skills following the standard format |
 | `check-prd-readiness` | Score a PRD's readiness for an AI code pipeline with traffic-light ratings |
+| `build-prototype-harness` | Build a company-grounded prototype harness of seven steering docs, packaged as an installable plugin |
+| `create-design-md` | Build a single design.md steering doc from a CSS file or live website |
 
 ---
 
