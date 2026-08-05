@@ -60,6 +60,7 @@ You don't need to memorize this list — it's here for reference. Just describe 
 |-------|-------------|
 | `build-compelling-story` | Transform raw notes into a Steve Jobs style 3-Act Narrative |
 | `executive-alignment` | Rewrite messages for executives using Minto Pyramid Principle |
+| `pyramid-principle-comms` | Restructure updates into a top-down executive format using the Pyramid Principle |
 | `test-hypothesis` | Create customer-centred scenarios to validate hypotheses |
 | `refine-metric` | Ensure metrics focus on outcomes, not outputs |
 | `refine-outcome-statement` | Make outcome statements specific and measurable |
@@ -77,9 +78,12 @@ You don't need to memorize this list — it's here for reference. Just describe 
 | `swot-analysis` | Conduct strategic SWOT analysis |
 | `define-north-star-metric` | Brainstorm North Star Metrics |
 | `generate-user-stories` | Break features into user stories |
-| `prioritization-framework` | Apply RICE framework to feature lists |
+| `prioritisation-framework` | Apply RICE framework to feature lists |
 | `draft-prd-outline` | Generate structured PRD outlines |
+| `generate-ai-ready-prd` | Expand a problem, persona, and solution into a full 8-section AI-ready PRD |
+| `explain-this-codebase` | Explain a codebase in plain English for non-technical readers |
 | `add-new-skill` | Scaffold new skills following the standard format |
+| `check-prd-readiness` | Score a PRD's readiness for an AI code pipeline with traffic-light ratings |
 
 ---
 

@@ -1,11 +1,11 @@
 ---
-name: prioritization-framework
-description: Apply the RICE framework (Reach, Impact, Confidence, Effort) to a list of features for data-informed prioritization. Use when someone needs to rank features for their next development cycle.
+name: prioritisation-framework
+description: Apply the RICE framework (Reach, Impact, Confidence, Effort) to quantitatively score and rank a list of features for the next development cycle. Use when someone wants a RICE score per feature. For qualitative ranking of discovery-stage opportunities use prioritise-opportunities; for ranking solution ideas with assumption mapping use prioritise-solutions.
 ---
 
-# Prioritization Framework (RICE)
+# Prioritisation Framework (RICE)
 
-Apply the RICE framework to help prioritize a list of features.
+Apply the RICE framework to help prioritise a list of features.
 
 ## Instructions
 

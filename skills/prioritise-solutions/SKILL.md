@@ -1,6 +1,6 @@
 ---
 name: prioritise-solutions
-description: Rank potential solutions based on expected customer impact and identify key assumptions to validate. Use when someone has brainstormed solutions and needs to narrow down.
+description: Rank a list of already-brainstormed solution ideas by expected customer impact and surface the key assumptions to validate before building. Use when someone has solution options to narrow down. For ranking discovery-stage opportunities before solutioning use prioritise-opportunities; for RICE-scoring features for a dev cycle use prioritisation-framework.
 ---
 
 # Prioritising Solutions & Assumption Mapping
