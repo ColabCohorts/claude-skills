@@ -1,10 +1,9 @@
 {
   "name": "colab-toolkit",
-  "version": "1.0.1",
   "description": "Product management skills for discovery, strategy, prioritization, and communication workflows",
   "author": {
     "name": "Colab Cohorts"
   },
-  "repository": "https://github.com/ColabCohorts/claude-skills",
+  "repository": "https://github.com/ColabCohorts/colab-product-skills",
   "license": "MIT"
 }

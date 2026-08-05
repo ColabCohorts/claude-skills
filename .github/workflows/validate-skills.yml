@@ -26,5 +26,5 @@ jobs:
 
       - name: Validate skill format
         run: |
-          ls -la skills/ | head -5
+          find skills -maxdepth 1 -mindepth 1 -print | head -5
           node scripts/validate-skills.js

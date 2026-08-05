@@ -1,58 +1,60 @@
-# Colab Toolkit — Claude Code Plugin
+# Colab Toolkit
 
-A Claude Code plugin with product management skills for discovery, strategy, prioritization, and communication workflows.
+A ready-made set of product management skills — for discovery, strategy, prioritization, and communication work. Once installed, you don't need to memorize any commands: just describe what you're trying to do (e.g. "help me refine this metric" or "prioritise this list of opportunities") and the right skill is used automatically.
 
-[![Validate Claude Skills](https://github.com/ColabCohorts/claude-skills/actions/workflows/validate-skills.yml/badge.svg)](https://github.com/ColabCohorts/claude-skills/actions/workflows/validate-skills.yml)
+[![Validate Agent Skills](https://github.com/ColabCohorts/colab-product-skills/actions/workflows/validate-skills.yml/badge.svg)](https://github.com/ColabCohorts/colab-product-skills/actions/workflows/validate-skills.yml)
 
-## Installation
+## Getting Started
 
-### Add the marketplace and install (recommended)
+These skills work inside four different AI tools: **Claude Code**, **Codex CLI**, **ChatGPT**, and **Gemini CLI**. Pick whichever one your team already uses below — you only need to follow one section.
 
-```bash
-/plugin marketplace add ColabCohorts/claude-skills
-/plugin install colab-toolkit@colab-toolkit
-```
+Not sure which one you have? Ask your engineering team, or look at what's already on your computer. Each option below assumes the base tool (Claude Code, Codex CLI, ChatGPT desktop, or Gemini CLI) is already installed — if it isn't, that's a one-time setup your engineering team can help with first. Everything below is a one-time step: once it's done, the skills are just there whenever you use the tool.
 
-### Local testing
+### Claude Code
 
-Clone the repo and load it directly:
+1. Open Claude Code.
+2. Type this into the chat box and press enter:
+   ```
+   /plugin marketplace add ColabCohorts/colab-product-skills
+   ```
+3. Then type this and press enter:
+   ```
+   /plugin install colab-toolkit@colab-toolkit
+   ```
 
-```bash
-git clone https://github.com/ColabCohorts/claude-skills.git
-claude --plugin-dir ./claude-skills
-```
-
-### Require for your team
-
-Add to your project's `.claude/settings.json` so teammates are prompted to install:
-
-```json
-{
-  "extraKnownMarketplaces": {
-    "colab-toolkit": {
-      "source": {
-        "source": "github",
-        "repo": "ColabCohorts/claude-skills"
-      }
-    }
-  }
-}
-```
-
-## Usage
-
-Once installed, skills are available under the `colab-toolkit` namespace:
+That's it. From now on, just describe what you need in plain English and Claude will pick the right skill automatically. If you want to name one directly, you can type things like:
 
 ```
-/colab-toolkit:build-compelling-story
 /colab-toolkit:refine-metric
-/colab-toolkit:brainstorm-solutions
-/colab-toolkit:explain-this-codebase
+/colab-toolkit:build-compelling-story
 ```
 
-Claude will also automatically invoke skills based on task context using the skill descriptions.
+### ChatGPT / Codex CLI
+
+ChatGPT and Codex CLI share the same skills, so one setup step covers both.
+
+1. Open your computer's **Terminal** app (not a ChatGPT or Codex chat window).
+2. Run these two lines:
+   ```bash
+   codex plugin marketplace add ColabCohorts/colab-product-skills
+   codex plugin add colab-toolkit
+   ```
+
+That's it. From now on, describe what you need in plain English in either ChatGPT or Codex CLI and it'll pick the right skill. If you want to name one directly, use `@refine-metric` in ChatGPT or `$refine-metric` in Codex CLI.
+
+### Gemini CLI
+
+1. Open your computer's **Terminal** app.
+2. Run this line:
+   ```bash
+   gemini extensions install https://github.com/ColabCohorts/colab-product-skills
+   ```
+
+That's it. From now on, describe what you need in plain English in Gemini CLI and it'll pick the right skill automatically.
 
 ## Available Skills
+
+You don't need to memorize this list — it's here for reference. Just describe your task and the right skill will be used automatically.
 
 | Skill | Description |
 |-------|-------------|
@@ -83,14 +85,26 @@ Claude will also automatically invoke skills based on task context using the ski
 | `add-new-skill` | Scaffold new skills following the standard format |
 | `check-prd-readiness` | Score a PRD's readiness for an AI code pipeline with traffic-light ratings |
 
-## Plugin Structure
+---
+
+## For Maintainers
+
+The sections below are for whoever maintains this repository, not for everyday users of the skills.
+
+### Repository Structure
 
 ```
-claude-skills/
+colab-product-skills/
 ├── .claude-plugin/
-│   ├── plugin.json          # Plugin manifest
-│   └── marketplace.json     # Marketplace catalog
-├── skills/                  # All skills live here
+│   ├── plugin.json          # Claude Code plugin manifest
+│   └── marketplace.json     # Claude Code marketplace catalog
+├── .codex-plugin/
+│   └── plugin.json          # Codex CLI / ChatGPT plugin manifest
+├── .agents/
+│   └── plugins/
+│       └── marketplace.json # Codex CLI / ChatGPT marketplace catalog
+├── gemini-extension.json    # Gemini CLI extension manifest
+├── skills/                  # All skills live here — shared by every provider
 │   ├── refine-metric/
 │   │   └── SKILL.md
 │   ├── brainstorm-solutions/
@@ -103,25 +117,45 @@ claude-skills/
         └── validate-skills.yml
 ```
 
-Each skill is a folder containing a `SKILL.md` with YAML frontmatter (`name`, `description`) and markdown instructions.
+Each skill is a folder containing a `SKILL.md` with YAML frontmatter (`name`, `description`) and markdown instructions. The same `SKILL.md` is what every provider manifest above points at — there is no per-provider copy of skill content.
 
-## Development
+### Local Testing
 
-### Validate skills locally
+Clone the repo and load it directly, without going through a marketplace:
+
+```bash
+git clone https://github.com/ColabCohorts/colab-product-skills.git
+claude --plugin-dir ./colab-product-skills
+```
+
+### Require for Your Team
+
+Add to your project's `.claude/settings.json` so teammates are prompted to install:
+
+```json
+{
+  "extraKnownMarketplaces": {
+    "colab-toolkit": {
+      "source": {
+        "source": "github",
+        "repo": "ColabCohorts/colab-product-skills"
+      }
+    }
+  }
+}
+```
+
+### Validate Skills Locally
 
 ```bash
 node scripts/validate-skills.js
 ```
 
-### Test the plugin
-
-```bash
-claude --plugin-dir .
-```
-
-## Contributing
+### Contributing
 
 1. Create a new skill folder under `skills/` with a `SKILL.md`
 2. Ensure the `name` field in frontmatter matches the folder name
 3. Run `node scripts/validate-skills.js` to check formatting
 4. Submit a PR — CI will validate automatically
+
+A `SKILL.md` written this way automatically works across Claude Code, Codex CLI, ChatGPT, and Gemini CLI — no provider-specific steps needed. Only the provider manifests at the repo root (not covered by this checklist) need updating when the toolkit itself changes name, version, or description.
